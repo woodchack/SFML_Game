@@ -1,11 +1,11 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
+#include "Game.h"
 
 int main()
 {
-	unsigned int width = 640;
-	unsigned int height = 360;
-	sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode({ width,height }), "Game");
+	// Init Game engine
+	
+	Game game();
 
 	while (window->isOpen())
 	{
