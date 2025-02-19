@@ -1,32 +1,28 @@
 #include <iostream>
+
+
 #include "Game.h"
 
 int main()
 {
 	// Init Game engine
 	
-	Game game();
+	Game game;
+	
 
-	while (window->isOpen())
+	while (game.windowIsRunning()) // Game loop
 	{
-		while (const std::optional event = window->pollEvent()) 
-		{
-			if (event->is<sf::Event::Closed>())
-			{
-				window->close();
-			}
-		}
-
+		// Update
+		game.update();
 		//Render
-
-		window->clear(sf::Color(0xFF8800FF));
+		game.render();
+		
 
 		//Drawing
 
-		window->display();
+		
 	}
 
-	delete window;
 
 	return 0;
 }

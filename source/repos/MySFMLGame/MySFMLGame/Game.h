@@ -1,9 +1,6 @@
 #pragma once
 
 
-#include <iostream>
-
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 #include <SFML/System.hpp>
@@ -20,7 +17,8 @@ private:
 
 	sf::RenderWindow* window;
 	sf::VideoMode videoMode;
-	sf::Event ev;
+//	sf::Event event;
+	
 	
 
 
@@ -29,6 +27,7 @@ private:
 
 	void initVariables();
 	void initWindow();
+
 public:
 
 	// Конструкторы и Деструкторы
@@ -38,6 +37,8 @@ public:
 
 	// Функции
 
+
+	void pollEvents();
 	void update();
 	void render();
 
@@ -46,6 +47,6 @@ public:
 
 	// Доступ
 
-	const bool running() const;
+	const bool windowIsRunning() const;
 };
 

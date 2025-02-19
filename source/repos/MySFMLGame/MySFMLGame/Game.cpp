@@ -6,14 +6,13 @@
 
 void Game::initVariables()
 {
-	this->window = nullptr;
+	window = nullptr;
 }
 
 void Game::initWindow()
 {
-	this->videoMode.height = 600;
-	this->videoMode.width = 800;
-	this->window = new sf::RenderWindow(this->videoMode, "Game", sf::Style::Titlebar | sf::Style::Close);
+	videoMode = sf::VideoMode::getDesktopMode();
+	window = new sf::RenderWindow(videoMode, "Game", sf::Style::Titlebar | sf::Style::Close);
 }
 
 
@@ -22,13 +21,14 @@ void Game::initWindow()
 
 Game::Game()
 {
-	this->initVariables();
-	this->initWindow();
+	initVariables();
+	initWindow();
+
 }
 
 Game::~Game()
 {
-	delete this->window;
+	delete window;
 }
 
 	
@@ -37,24 +37,63 @@ Game::~Game()
 
 
 // Публичные Функции
+void Game::pollEvents()
+{
+	
+	while (const std::optional event = window->pollEvent())
+	{
+
+		if (event->is<sf::Event::Closed>())
+		{
+
+			window->close();
+
+		} else
+			if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
+			{
+
+				if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
+				{
+					window->close();
+				}
+
+			}
+
+	}
+		
+			
+		
+	}
+
 
 // Доступ
 
+
+
 void Game::update()
 {
+	pollEvents();
 }
 
 void Game::render()
 {
+	// Render objects here:
+	
+
+	window->clear(sf::Color(255,0,0,255));
+
+	// Draw game here:
+
+	window->display();
 }
 
 
  // Публичные переменные
- 
+
  // Доступ
-const bool Game::running() const
+const bool Game::windowIsRunning() const
 {
-	
+	return window->isOpen();
 }
 
 

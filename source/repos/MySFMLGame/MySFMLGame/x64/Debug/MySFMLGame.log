@@ -1,2 +1,45 @@
-﻿  main.cpp
-  MySFMLGame.vcxproj -> C:\IT\SFMLGame\source\repos\MySFMLGame\x64\Debug\MySFMLGame.exe
+﻿  Game.cpp
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
+  (компиляция исходного файла "Game.cpp")
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\stdexcept(100,19):
+       см. объявление "std::runtime_error"
+      C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
+       см. объявление "sf::Exception"
+  
+  main.cpp
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
+  (компиляция исходного файла "main.cpp")
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\stdexcept(100,19):
+       см. объявление "std::runtime_error"
+      C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
+       см. объявление "sf::Exception"
+  
+  Создание кода...
+Game.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::RenderTarget::clear(class sf::Color)" (__imp_?clear@RenderTarget@sf@@QEAAXVColor@2@@Z) в функции "public: void __cdecl Game::render(void)" (?render@Game@@QEAAXXZ).
+Game.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::VideoMode::VideoMode(void)" (__imp_??0VideoMode@sf@@QEAA@XZ) в функции "public: __cdecl Game::Game(void)" (??0Game@@QEAA@XZ).
+Game.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static class sf::VideoMode __cdecl sf::VideoMode::getDesktopMode(void)" (__imp_?getDesktopMode@VideoMode@sf@@SA?AV12@XZ) в функции "private: void __cdecl Game::initWindow(void)" (?initWindow@Game@@AEAAXXZ).
+Game.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: bool __cdecl sf::WindowBase::isOpen(void)const " (__imp_?isOpen@WindowBase@sf@@QEBA_NXZ) в функции "public: bool const __cdecl Game::windowIsRunning(void)const " (?windowIsRunning@Game@@QEBA?B_NXZ).
+Game.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: class std::optional<class sf::Event> __cdecl sf::WindowBase::pollEvent(void)" (__imp_?pollEvent@WindowBase@sf@@QEAA?AV?$optional@VEvent@sf@@@std@@XZ) в функции "public: void __cdecl Game::pollEvents(void)" (?pollEvents@Game@@QEAAXXZ).
+Game.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::String::String(char const *,class std::locale const &)" (__imp_??0String@sf@@QEAA@PEBDAEBVlocale@std@@@Z) в функции "private: void __cdecl Game::initWindow(void)" (?initWindow@Game@@AEAAXXZ).
+Game.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::String::~String(void)" (__imp_??1String@sf@@QEAA@XZ) в функции "private: void __cdecl Game::initWindow(void)" (?initWindow@Game@@AEAAXXZ).
+Game.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Window::display(void)" (__imp_?display@Window@sf@@QEAAXXZ) в функции "public: void __cdecl Game::render(void)" (?render@Game@@QEAAXXZ).
+Game.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::RenderWindow::RenderWindow(class sf::VideoMode,class sf::String const &,unsigned int,enum sf::State,struct sf::ContextSettings const &)" (__imp_??0RenderWindow@sf@@QEAA@VVideoMode@1@AEBVString@1@IW4State@1@AEBUContextSettings@1@@Z) в функции "private: void __cdecl Game::initWindow(void)" (?initWindow@Game@@AEAAXXZ).
+Game.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: virtual __cdecl sf::RenderWindow::~RenderWindow(void)" (__imp_??1RenderWindow@sf@@UEAA@XZ) в функции "public: virtual void * __cdecl sf::RenderWindow::`scalar deleting destructor'(unsigned int)" (??_GRenderWindow@sf@@UEAAPEAXI@Z).
+Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl sf::Window::create(struct HWND__ *,struct sf::ContextSettings const &)" (?create@Window@sf@@UEAAXPEAUHWND__@@AEBUContextSettings@2@@Z).
+Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl sf::Window::create(struct HWND__ *)" (?create@Window@sf@@UEAAXPEAUHWND__@@@Z).
+Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl sf::Window::create(class sf::VideoMode,class sf::String const &,enum sf::State,struct sf::ContextSettings const &)" (?create@Window@sf@@UEAAXVVideoMode@2@AEBVString@2@W4State@2@AEBUContextSettings@2@@Z).
+Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl sf::Window::create(class sf::VideoMode,class sf::String const &,enum sf::State)" (?create@Window@sf@@UEAAXVVideoMode@2@AEBVString@2@W4State@2@@Z).
+Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl sf::Window::create(class sf::VideoMode,class sf::String const &,unsigned int,enum sf::State,struct sf::ContextSettings const &)" (?create@Window@sf@@UEAAXVVideoMode@2@AEBVString@2@IW4State@2@AEBUContextSettings@2@@Z).
+Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl sf::Window::create(class sf::VideoMode,class sf::String const &,unsigned int,enum sf::State)" (?create@Window@sf@@UEAAXVVideoMode@2@AEBVString@2@IW4State@2@@Z).
+Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl sf::Window::close(void)" (?close@Window@sf@@UEAAXXZ).
+Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual class sf::Vector2<unsigned int> __cdecl sf::RenderWindow::getSize(void)const " (?getSize@RenderWindow@sf@@UEBA?AV?$Vector2@I@2@XZ).
+Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual bool __cdecl sf::RenderWindow::isSrgb(void)const " (?isSrgb@RenderWindow@sf@@UEBA_NXZ).
+Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual bool __cdecl sf::RenderWindow::setActive(bool)" (?setActive@RenderWindow@sf@@UEAA_N_N@Z).
+Game.obj : error LNK2001: неразрешенный внешний символ "protected: virtual void __cdecl sf::RenderWindow::onCreate(void)" (?onCreate@RenderWindow@sf@@MEAAXXZ).
+Game.obj : error LNK2001: неразрешенный внешний символ "protected: virtual void __cdecl sf::RenderWindow::onResize(void)" (?onResize@RenderWindow@sf@@MEAAXXZ).
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-window-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-system-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-graphics-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-audio-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-network-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\x64\Debug\MySFMLGame.exe : fatal error LNK1120: неразрешенных внешних элементов: 22
