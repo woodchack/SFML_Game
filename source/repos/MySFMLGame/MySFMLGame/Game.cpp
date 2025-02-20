@@ -12,7 +12,7 @@ void Game::initVariables()
 	// Игровая логика
 
 	points = 0;
-	enemySpawnTimerMax = 1000.f;
+	enemySpawnTimerMax = 10.f;
 	enemySpawnTimer = enemySpawnTimerMax;
 	countEnemies = 0;
 	maxEnemies = 5;
@@ -29,7 +29,7 @@ void Game::initWindow()
 
 	window = new sf::RenderWindow(videoMode, "Game", sf::Style::Titlebar | sf::Style::Close);
 
-	window->setFramerateLimit(144);
+	window->setFramerateLimit(60);
 }
 
 void Game::initEnemies()
@@ -113,6 +113,8 @@ void Game::updateMousePosition()
 
 	mousePosWindow = sf::Mouse::getPosition(*window);
 
+	mousePosView = window->mapPixelToCoords(mousePosWindow);
+
 
 	std::cout << "Mouse pos = " << sf::Mouse::getPosition(*window).x << " " << sf::Mouse::getPosition(*window).y << "\n";
 }
@@ -135,13 +137,36 @@ void Game::updateEnemies()
 			enemySpawnTimer += 1.f;
 		}
 	}
-
-	for (auto &e :this->enemies)
+	// Перемещение вражин
+	for (int i = 0; i < enemies.size(); ++i)
 	{
-		e.move(sf::Vector2f(0.f, 2.f));
-	}
+		enemies[i].move(sf::Vector2f(0.f, 2.f));
 
+
+		// Проверка на клик
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		{
+			if (enemies[i].getGlobalBounds().contains(mousePosView))
+			{
+				enemies[i].setPosition(sf::Vector2f(
+					static_cast<float>(rand() % static_cast<int>(window->getSize().x - enemy.getSize().x)),
+					0.f
+				));
+			}
+		}
+
+		if (enemies[i].getPosition().y > window->getSize().y)
+		{
+			enemies[i].setPosition(sf::Vector2f(
+				static_cast<float>(rand() % static_cast<int>(window->getSize().x - enemy.getSize().x)),
+				0.f
+			));
+		}
+	}
 }
+
+
 
 void Game::update()
 {

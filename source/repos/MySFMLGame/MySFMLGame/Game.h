@@ -11,6 +11,17 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
 
+// Перечисление направлений для анимации
+enum directions {
+	UP,         // Вверх
+	RIGHT,      // Вправо
+	DOWN,       // Вниз
+	LEFT,       // Влево
+	LEFT_UP,    // Влево-вверх
+	RIGHT_UP,   // Вправо-вверх
+	RIGHT_DOWN, // Вправо-вниз
+	LEFT_DOWN   // Влево-вниз
+};
 
 class Game
 {
@@ -35,6 +46,7 @@ private:
 	// Игровые объекты
 	std::vector<sf::RectangleShape> enemies;
 	sf::RectangleShape enemy;
+	
 
 
 
@@ -47,6 +59,7 @@ private:
 	// Позиция мыши
 
 	sf::Vector2i mousePosWindow;
+	sf::Vector2f mousePosView;
 
 public:
 
