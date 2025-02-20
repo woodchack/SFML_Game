@@ -1,18 +1,28 @@
 ﻿  Game.cpp
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "Game.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\stdexcept(100,19):
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include\stdexcept(100,19):
        см. объявление "std::runtime_error"
-      C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
+      C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,51): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,51): warning C4244:         with
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,51): warning C4244:         [
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,51): warning C4244:             T=float
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,51): warning C4244:         ]
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,39): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,39): warning C4244:         with
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,39): warning C4244:         [
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,39): warning C4244:             T=float
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,39): warning C4244:         ]
   main.cpp
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "main.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\stdexcept(100,19):
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include\stdexcept(100,19):
        см. объявление "std::runtime_error"
-      C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
+      C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
   Создание кода...
-  MySFMLGame.vcxproj -> C:\IT\Study\SFML_Game\source\repos\MySFMLGame\Debug\MySFMLGame.exe
+  MySFMLGame.vcxproj -> C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\Debug\MySFMLGame.exe

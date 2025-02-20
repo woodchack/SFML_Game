@@ -1,5 +1,9 @@
 #pragma once
 
+#include <iostream>
+#include <vector>
+#include <ctime>
+#include <random>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
@@ -17,9 +21,20 @@ private:
 
 	sf::RenderWindow* window;
 	sf::VideoMode videoMode;
-//	sf::Event event;
-	
-	
+
+
+	// Игровая логика
+
+
+	int points;
+	float enemySpawnTimer;
+	float enemySpawnTimerMax;
+	unsigned int maxEnemies;
+	unsigned int countEnemies;
+
+	// Игровые объекты
+	std::vector<sf::RectangleShape> enemies;
+	sf::RectangleShape enemy;
 
 
 
@@ -27,6 +42,11 @@ private:
 
 	void initVariables();
 	void initWindow();
+	void initEnemies();
+
+	// Позиция мыши
+
+	sf::Vector2i mousePosWindow;
 
 public:
 
@@ -37,13 +57,19 @@ public:
 
 	// Функции
 
-
+	void spawnEnemy();
 	void pollEvents();
+	void updateMousePosition();
+	void updateEnemies();
 	void update();
+	void renderEnemies();
 	void render();
 
 
 	// Переменные
+
+	unsigned int width = 800;
+	unsigned int height = 600;
 
 	// Доступ
 

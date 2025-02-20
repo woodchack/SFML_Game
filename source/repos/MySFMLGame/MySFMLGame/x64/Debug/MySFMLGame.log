@@ -1,17 +1,17 @@
 ﻿  Game.cpp
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "Game.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\stdexcept(100,19):
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include\stdexcept(100,19):
        см. объявление "std::runtime_error"
-      C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
+      C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
   main.cpp
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "main.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\stdexcept(100,19):
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include\stdexcept(100,19):
        см. объявление "std::runtime_error"
-      C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
+      C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
   Создание кода...
@@ -37,9 +37,9 @@ Game.obj : error LNK2001: неразрешенный внешний символ
 Game.obj : error LNK2001: неразрешенный внешний символ "public: virtual bool __cdecl sf::RenderWindow::setActive(bool)" (?setActive@RenderWindow@sf@@UEAA_N_N@Z).
 Game.obj : error LNK2001: неразрешенный внешний символ "protected: virtual void __cdecl sf::RenderWindow::onCreate(void)" (?onCreate@RenderWindow@sf@@MEAAXXZ).
 Game.obj : error LNK2001: неразрешенный внешний символ "protected: virtual void __cdecl sf::RenderWindow::onResize(void)" (?onResize@RenderWindow@sf@@MEAAXXZ).
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-window-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-system-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-graphics-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-audio-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-network-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\x64\Debug\MySFMLGame.exe : fatal error LNK1120: неразрешенных внешних элементов: 22
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-window-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-system-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-graphics-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-audio-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\\External\lib\sfml-network-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\IT\SFMLGame\SFML_Game\source\repos\MySFMLGame\x64\Debug\MySFMLGame.exe : fatal error LNK1120: неразрешенных внешних элементов: 22
