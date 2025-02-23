@@ -44,17 +44,27 @@ private:
 	unsigned int countEnemies;
 
 	// Игровые объекты
+
+	// Враги
+
 	std::vector<sf::RectangleShape> enemies;
 	sf::RectangleShape enemy;
 	
+	//Character
+	sf::Sprite character;
 
+	sf::Texture characterTexture;
 
+	
+
+	sf::IntRect dir[8];
 
 	// Приватные функции
-
+	int returnError();
 	void initVariables();
 	void initWindow();
 	void initEnemies();
+	void initChar();
 
 	// Позиция мыши
 
@@ -69,14 +79,17 @@ public:
 	virtual ~Game();
 
 	// Функции
-
+	void characterUpdate();
 	void spawnEnemy();
 	void pollEvents();
 	void updateMousePosition();
 	void updateEnemies();
 	void update();
+	void characterRender();
 	void renderEnemies();
 	void render();
+	
+
 
 
 	// Переменные

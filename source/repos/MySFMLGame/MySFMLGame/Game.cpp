@@ -2,7 +2,10 @@
 
 // Приватные функции
 
-
+int Game::returnError()
+{
+	return -1;
+}
 
 void Game::initVariables()
 {
@@ -12,10 +15,29 @@ void Game::initVariables()
 	// Игровая логика
 
 	points = 0;
+
 	enemySpawnTimerMax = 10.f;
 	enemySpawnTimer = enemySpawnTimerMax;
+	
 	countEnemies = 0;
 	maxEnemies = 5;
+
+
+	// char directions 
+
+	sf::IntRect dir[8];
+	dir[0] = sf::IntRect({ {116, 0}, {116, 116} });     // up
+	dir[1] = sf::IntRect({ {232, 116}, {116, 116} });   // right
+	dir[2] = sf::IntRect({ {116, 232}, {116, 116} });   // down
+	dir[3] = sf::IntRect({ {0, 116}, {116, 116} });     // left
+	dir[4] = sf::IntRect({ {0, 0}, {116, 116} });       // left_up
+	dir[5] = sf::IntRect({ {232, 0}, {116, 116} });     // right_up
+	dir[6] = sf::IntRect({ {232, 232}, {116, 116} });  // right_down
+	dir[7] = sf::IntRect({ {0, 232}, {116, 116} });     // left_down
+
+	
+	
+	
 
 
 }
@@ -42,15 +64,43 @@ void Game::initEnemies()
 	enemy.setOutlineThickness(4.f);
 }
 
+void Game::initChar()
+{
+	
+	if (!characterTexture.loadFromFile("Sprites/ship.png")) {
+		std::cerr << "ERROR::COULD NOT LOAD TEXTURE::Sprites/ship.png";
+		returnError();
+	}
+	// Массив прямоугольников для разных направлений (текстурный атлас)
+
+	dir[0] = sf::IntRect({ {116, 0}, {116, 116} });     // up
+	dir[1] = sf::IntRect({ {232, 116}, {116, 116} });   // right
+	dir[2] = sf::IntRect({ {116, 232}, {116, 116} });   // down
+	dir[3] = sf::IntRect({ {0, 116}, {116, 116} });     // left
+	dir[4] = sf::IntRect({ {0, 0}, {116, 116} });       // left_up
+	dir[5] = sf::IntRect({ {232, 0}, {116, 116} });     // right_up
+	dir[6] = sf::IntRect({ {235, 235}, {116, 116} });  // right_down
+	dir[7] = sf::IntRect({ {0, 235}, {116, 116} });     // left_down
+
+	character.setTexture(characterTexture); // Установка текстуры
+	characterTexture.setSmooth(true);
+	character.setTextureRect(dir[RIGHT]);
+	character.setOrigin(sf::Vector2f(116, 116));
+	character.setPosition(sf::Vector2f(width / 2, height / 2));
+
+
+}
+
 
 // Конструкторы и Деструкторы
 
 
-Game::Game()
+Game::Game() : character(characterTexture)
 {
 	initVariables();
 	initWindow();
 	initEnemies();
+	initChar();
 
 }
 
@@ -62,6 +112,8 @@ Game::~Game()
 	
 
 // Публичные Функции
+
+
 void Game::spawnEnemy() {
 	// Получаем размеры окна и врага
 	
@@ -120,7 +172,7 @@ void Game::updateMousePosition()
 }
 
 
-// Доступ
+
 
 void Game::updateEnemies()
 {
@@ -165,7 +217,52 @@ void Game::updateEnemies()
 		}
 	}
 }
+void Game::characterUpdate()
+{
+	// Обработка движения
 
+	// Диагональные направления (имеют приоритет над основными)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) &&
+		sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+		character.move({ -1.5f, -1.5f });
+		character.setTextureRect(dir[LEFT_UP]);
+	} else
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) &&
+		sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+		character.move({ 1.5f, -1.5f });
+		character.setTextureRect(dir[RIGHT_UP]);
+	} else
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) &&
+		sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+		character.move({ 1.5f, 1.5f });
+		character.setTextureRect(dir[RIGHT_DOWN]);
+	} else
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) &&
+		sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
+		character.move({ -1.5f, 1.5f });
+		character.setTextureRect(dir[LEFT_DOWN]);
+	} else
+
+		  // Основные направления
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
+		character.move({ 2.5f, 0.0f });
+		character.setTextureRect(dir[RIGHT]);
+	} else
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+		character.move({ 0.0f, -2.5f }); 
+		character.setTextureRect(dir[UP]);
+	} else
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+		character.move({ 0.0f, 2.5f });
+		character.setTextureRect(dir[DOWN]);
+	} else
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
+		character.move({ -2.5f, 0.0f });
+		character.setTextureRect(dir[LEFT]);
+	}
+
+	
+}
 
 
 void Game::update()
@@ -175,6 +272,8 @@ void Game::update()
 	updateMousePosition();
 
 	updateEnemies();
+
+	characterUpdate();
 	
 }
 
@@ -190,7 +289,10 @@ void Game::renderEnemies()
 	}
 	
 }
-
+void Game::characterRender()
+{
+	window->draw(character);
+}
 
 
 void Game::render()
@@ -199,11 +301,12 @@ void Game::render()
 	
 	
 
-	window->clear(sf::Color::Blue);
+	window->clear(sf::Color::White);
 
 	// Draw game here:
+	characterRender();
 	renderEnemies();
-
+	
 	window->display();
 }
 
