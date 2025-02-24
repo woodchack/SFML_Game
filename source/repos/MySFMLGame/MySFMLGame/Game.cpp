@@ -2,6 +2,8 @@
 
 // Приватные функции
 
+
+
 int Game::returnError()
 {
 	return -1;
@@ -34,6 +36,8 @@ void Game::initVariables()
 	dir[5] = sf::IntRect({ {232, 0}, {116, 116} });     // right_up
 	dir[6] = sf::IntRect({ {232, 232}, {116, 116} });  // right_down
 	dir[7] = sf::IntRect({ {0, 232}, {116, 116} });     // left_down
+
+	// Fonts
 
 	
 	
@@ -91,6 +95,22 @@ void Game::initChar()
 
 }
 
+void Game::initFonts()
+{
+	sf::Font font;
+	
+	if (!font.openFromFile("Fonts/Pixelizer.ttf"))
+	{
+		std::cerr << "Error open file 'Fonts/Pixelizer.ttf'";
+	}
+	textPoints.setFont(font);
+	textPoints.setCharacterSize(24);
+	textPoints.setFillColor(sf::Color::Black);
+	textPoints.setString("Score = ");
+	textPoints.setPosition(sf::Vector2f(width, height));
+	
+}
+
 
 // Конструкторы и Деструкторы
 
@@ -101,6 +121,7 @@ Game::Game() : character(characterTexture)
 	initWindow();
 	initEnemies();
 	initChar();
+	initFonts();
 
 }
 
@@ -195,18 +216,19 @@ void Game::updateEnemies()
 		enemies[i].move(sf::Vector2f(0.f, 2.f));
 
 
-		// Проверка на клик
+		// Проверка пересечение
 
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-		{
-			if (enemies[i].getGlobalBounds().contains(mousePosView))
+		
+			if (enemies[i].getGlobalBounds().findIntersection(character.getGlobalBounds()))
 			{
 				enemies[i].setPosition(sf::Vector2f(
 					static_cast<float>(rand() % static_cast<int>(window->getSize().x - enemy.getSize().x)),
 					0.f
 				));
+				points++;
+				std::cout << points << "\n";
 			}
-		}
+		
 
 		if (enemies[i].getPosition().y > window->getSize().y)
 		{
@@ -224,40 +246,40 @@ void Game::characterUpdate()
 	// Диагональные направления (имеют приоритет над основными)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) &&
 		sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
-		character.move({ -1.5f, -1.5f });
+		character.move({ -4.f, -4.f });
 		character.setTextureRect(dir[LEFT_UP]);
 	} else
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) &&
 		sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
-		character.move({ 1.5f, -1.5f });
+		character.move({ 4.f, -4.f });
 		character.setTextureRect(dir[RIGHT_UP]);
 	} else
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) &&
 		sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
-		character.move({ 1.5f, 1.5f });
+		character.move({ 4.f, 4.f });
 		character.setTextureRect(dir[RIGHT_DOWN]);
 	} else
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) &&
 		sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
-		character.move({ -1.5f, 1.5f });
+		character.move({ -4.f, 4.f });
 		character.setTextureRect(dir[LEFT_DOWN]);
 	} else
 
 		  // Основные направления
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
-		character.move({ 2.5f, 0.0f });
+		character.move({ 5.f, 0.0f });
 		character.setTextureRect(dir[RIGHT]);
 	} else
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
-		character.move({ 0.0f, -2.5f }); 
+		character.move({ 0.0f, -5.f }); 
 		character.setTextureRect(dir[UP]);
 	} else
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
-		character.move({ 0.0f, 2.5f });
+		character.move({ 0.0f, 5.f });
 		character.setTextureRect(dir[DOWN]);
 	} else
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
-		character.move({ -2.5f, 0.0f });
+		character.move({ -5.f, 0.0f });
 		character.setTextureRect(dir[LEFT]);
 	}
 
@@ -269,7 +291,7 @@ void Game::update()
 {
 	pollEvents();
 
-	updateMousePosition();
+//	updateMousePosition();
 
 	updateEnemies();
 
@@ -306,6 +328,7 @@ void Game::render()
 	// Draw game here:
 	characterRender();
 	renderEnemies();
+	
 	
 	window->display();
 }

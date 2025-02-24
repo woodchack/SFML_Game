@@ -4,6 +4,7 @@
 #include <vector>
 #include <ctime>
 #include <random>
+#include <cmath>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
@@ -32,6 +33,7 @@ private:
 
 	sf::RenderWindow* window;
 	sf::VideoMode videoMode;
+	
 
 
 	// Игровая логика
@@ -42,6 +44,9 @@ private:
 	float enemySpawnTimerMax;
 	unsigned int maxEnemies;
 	unsigned int countEnemies;
+
+	sf::Font font;
+	sf::Text textPoints;
 
 	// Игровые объекты
 
@@ -65,6 +70,7 @@ private:
 	void initWindow();
 	void initEnemies();
 	void initChar();
+	void initFonts();
 
 	// Позиция мыши
 

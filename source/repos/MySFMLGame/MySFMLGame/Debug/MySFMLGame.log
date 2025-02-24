@@ -1,20 +1,53 @@
 ﻿  Game.cpp
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
+C:\IT\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "Game.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\stdexcept(100,19):
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include\stdexcept(100,19):
        см. объявление "std::runtime_error"
-      C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
+      C:\IT\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,51): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,51): warning C4244:         with
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,51): warning C4244:         [
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,51): warning C4244:             T=float
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,51): warning C4244:         ]
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,39): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,39): warning C4244:         with
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,39): warning C4244:         [
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,39): warning C4244:             T=float
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(37,39): warning C4244:         ]
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(141,20): warning C4018: <: несоответствие типов со знаком и без знака
-  MySFMLGame.vcxproj -> C:\IT\Study\SFML_Game\source\repos\MySFMLGame\Debug\MySFMLGame.exe
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,51): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,51): warning C4244:         with
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,51): warning C4244:         [
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,51): warning C4244:             T=float
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,51): warning C4244:         ]
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,39): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,39): warning C4244:         with
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,39): warning C4244:         [
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,39): warning C4244:             T=float
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,39): warning C4244:         ]
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,55): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,55): warning C4244:         with
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,55): warning C4244:         [
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,55): warning C4244:             T=float
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,55): warning C4244:         ]
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,43): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,43): warning C4244:         with
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,43): warning C4244:         [
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,43): warning C4244:             T=float
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,43): warning C4244:         ]
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(110,45): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(110,45): warning C4244:         with
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(110,45): warning C4244:         [
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(110,45): warning C4244:             T=float
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(110,45): warning C4244:         ]
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(110,38): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(110,38): warning C4244:         with
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(110,38): warning C4244:         [
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(110,38): warning C4244:             T=float
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(110,38): warning C4244:         ]
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(112,1): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(119,1): error C2512: sf::Text: нет подходящего конструктора по умолчанию
+      C:\IT\SFML_Game\source\repos\MySFMLGame\External\include\SFML\Graphics\Text.hpp(56,25):
+       см. объявление "sf::Text"
+  
+C:\IT\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(214,20): warning C4018: <: несоответствие типов со знаком и без знака
+  main.cpp
+C:\IT\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
+  (компиляция исходного файла "main.cpp")
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include\stdexcept(100,19):
+       см. объявление "std::runtime_error"
+      C:\IT\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
+       см. объявление "sf::Exception"
+  
+  Создание кода...
