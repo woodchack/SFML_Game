@@ -97,17 +97,19 @@ void Game::initChar()
 
 void Game::initFonts()
 {
-	sf::Font font;
 	
 	if (!font.openFromFile("Fonts/Pixelizer.ttf"))
 	{
-		std::cerr << "Error open file 'Fonts/Pixelizer.ttf'";
+		std::cerr << "Error::Failed to load Fonts/Pixelizer.ttf";
+		returnError();
 	}
 	textPoints.setFont(font);
 	textPoints.setCharacterSize(24);
 	textPoints.setFillColor(sf::Color::Black);
-	textPoints.setString("Score = ");
-	textPoints.setPosition(sf::Vector2f(width, height));
+	textPoints.setPosition(sf::Vector2f(0.f, 0.f));
+	textPoints.setString("Score = 0");
+	
+	
 	
 }
 
@@ -115,13 +117,14 @@ void Game::initFonts()
 // Конструкторы и Деструкторы
 
 
-Game::Game() : character(characterTexture)
+Game::Game() : character(characterTexture), textPoints(font)
 {
 	initVariables();
 	initWindow();
+	initFonts();
 	initEnemies();
 	initChar();
-	initFonts();
+	
 
 }
 
@@ -225,7 +228,8 @@ void Game::updateEnemies()
 					static_cast<float>(rand() % static_cast<int>(window->getSize().x - enemy.getSize().x)),
 					0.f
 				));
-				points++;
+				++points;
+				updateFonts();
 				std::cout << points << "\n";
 			}
 		
@@ -285,6 +289,13 @@ void Game::characterUpdate()
 
 	
 }
+void Game::updateFonts()
+{
+	
+	std::ostringstream scorePoints;
+	scorePoints << "Score = " << points;
+	textPoints.setString(scorePoints.str());
+}
 
 
 void Game::update()
@@ -292,6 +303,7 @@ void Game::update()
 	pollEvents();
 
 //	updateMousePosition();
+
 
 	updateEnemies();
 
@@ -315,6 +327,10 @@ void Game::characterRender()
 {
 	window->draw(character);
 }
+void Game::renderFonts()
+{
+	window->draw(textPoints);
+}
 
 
 void Game::render()
@@ -326,8 +342,10 @@ void Game::render()
 	window->clear(sf::Color::White);
 
 	// Draw game here:
+	renderFonts();
 	characterRender();
 	renderEnemies();
+	
 	
 	
 	window->display();

@@ -5,6 +5,7 @@
 #include <ctime>
 #include <random>
 #include <cmath>
+#include <sstream>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
@@ -44,6 +45,8 @@ private:
 	float enemySpawnTimerMax;
 	unsigned int maxEnemies;
 	unsigned int countEnemies;
+
+
 
 	sf::Font font;
 	sf::Text textPoints;
@@ -90,9 +93,11 @@ public:
 	void pollEvents();
 	void updateMousePosition();
 	void updateEnemies();
+	void updateFonts();
 	void update();
 	void characterRender();
 	void renderEnemies();
+	void renderFonts();
 	void render();
 	
 

@@ -6,30 +6,30 @@ C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Excep
       C:\IT\Study\SFML_Game\source\repos\MySFMLGame\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(59,51): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(59,51): warning C4244:         with
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(59,51): warning C4244:         [
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(59,51): warning C4244:             T=float
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(59,51): warning C4244:         ]
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(59,39): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(59,39): warning C4244:         with
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(59,39): warning C4244:         [
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(59,39): warning C4244:             T=float
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(59,39): warning C4244:         ]
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(89,55): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(89,55): warning C4244:         with
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(89,55): warning C4244:         [
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(89,55): warning C4244:             T=float
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(89,55): warning C4244:         ]
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(89,43): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(89,43): warning C4244:         with
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(89,43): warning C4244:         [
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(89,43): warning C4244:             T=float
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(89,43): warning C4244:         ]
-C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(193,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,51): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,51): warning C4244:         with
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,51): warning C4244:         [
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,51): warning C4244:             T=float
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,51): warning C4244:         ]
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,39): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,39): warning C4244:         with
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,39): warning C4244:         [
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,39): warning C4244:             T=float
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(63,39): warning C4244:         ]
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,55): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,55): warning C4244:         with
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,55): warning C4244:         [
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,55): warning C4244:             T=float
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,55): warning C4244:         ]
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,43): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,43): warning C4244:         with
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,43): warning C4244:         [
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,43): warning C4244:             T=float
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(93,43): warning C4244:         ]
+C:\IT\Study\SFML_Game\source\repos\MySFMLGame\MySFMLGame\Game.cpp(217,20): warning C4018: <: несоответствие типов со знаком и без знака
   Создание кода
-  2 of 285 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+  3 of 350 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    2 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   MySFMLGame.vcxproj -> C:\IT\Study\SFML_Game\source\repos\MySFMLGame\Release\MySFMLGame.exe
