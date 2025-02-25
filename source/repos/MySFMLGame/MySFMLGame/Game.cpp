@@ -53,6 +53,13 @@ void Game::initWindow()
 
 	sf::VideoMode videoMode({width, height});
 
+	if(!backgroundTexture.loadFromFile("Sprites/back.png")) {
+		std::cerr << "ERROR::COULD NOT LOAD TEXTURE::Sprites/back.png";
+		returnError();
+	}
+	background.setTexture(backgroundTexture);
+	background.setScale(sf::Vector2f(width, height));
+
 	window = new sf::RenderWindow(videoMode, "Game", sf::Style::Titlebar | sf::Style::Close);
 
 	window->setFramerateLimit(60);
@@ -60,12 +67,15 @@ void Game::initWindow()
 
 void Game::initEnemies()
 {
+	if (!enemyTexture.loadFromFile("Sprites/fish.png")) {
+		std::cerr << "ERROR::COULD NOT LOAD TEXTURE::Sprites/fish.png";
+		returnError();
+	}
+
 	enemy.setPosition(sf::Vector2f(width / 2, height / 2));
 	enemy.setSize(sf::Vector2f(100.f, 100.f));
 	enemy.setScale(sf::Vector2f(0.5f, 0.5f));
-	enemy.setFillColor(sf::Color::Red);
-	enemy.setOutlineColor(sf::Color::White);
-	enemy.setOutlineThickness(4.f);
+	enemy.setTexture(&enemyTexture);
 }
 
 void Game::initChar()
@@ -117,7 +127,7 @@ void Game::initFonts()
 // Конструкторы и Деструкторы
 
 
-Game::Game() : character(characterTexture), textPoints(font)
+Game::Game() : character(characterTexture), background(backgroundTexture), textPoints(font)
 {
 	initVariables();
 	initWindow();
@@ -149,7 +159,7 @@ void Game::spawnEnemy() {
 
 	// Спавним врага
 
-	enemy.setFillColor(sf::Color::Green);
+	
 
 	enemies.push_back(enemy);
 }

@@ -53,10 +53,14 @@ private:
 
 	// Игровые объекты
 
+	sf::Texture backgroundTexture;
+	sf::Sprite background;
+
 	// Враги
 
 	std::vector<sf::RectangleShape> enemies;
 	sf::RectangleShape enemy;
+	sf::Texture enemyTexture;
 	
 	//Character
 	sf::Sprite character;
