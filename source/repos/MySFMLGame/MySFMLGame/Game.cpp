@@ -9,13 +9,14 @@ int Game::returnError()
 	return -1;
 }
 
+
 void Game::initVariables()
 {
 	window = nullptr;
 
 
 	// Игровая логика
-
+	
 	points = 0;
 
 	enemySpawnTimerMax = 10.f;
@@ -53,16 +54,20 @@ void Game::initWindow()
 
 	sf::VideoMode videoMode({width, height});
 
-	if(!backgroundTexture.loadFromFile("Sprites/back.png")) {
-		std::cerr << "ERROR::COULD NOT LOAD TEXTURE::Sprites/back.png";
-		returnError();
-	}
-	background.setTexture(backgroundTexture);
-	background.setScale(sf::Vector2f(width, height));
-
 	window = new sf::RenderWindow(videoMode, "Game", sf::Style::Titlebar | sf::Style::Close);
 
 	window->setFramerateLimit(60);
+}
+
+void Game::initBackground()
+{
+	if (!backgroundTexture.loadFromFile("Sprites/back.png"))
+	{
+		std::cerr << "ERROR::COULD NOT LOAD TEXTURE::Sprites/back.png";
+		returnError();
+	}
+	background.setTexture(&backgroundTexture);
+	background.setSize(sf::Vector2f(width, height));
 }
 
 void Game::initEnemies()
@@ -127,10 +132,11 @@ void Game::initFonts()
 // Конструкторы и Деструкторы
 
 
-Game::Game() : character(characterTexture), background(backgroundTexture), textPoints(font)
+Game::Game() : character(characterTexture), textPoints(font)
 {
 	initVariables();
 	initWindow();
+	initBackground();
 	initFonts();
 	initEnemies();
 	initChar();
@@ -246,10 +252,8 @@ void Game::updateEnemies()
 
 		if (enemies[i].getPosition().y > window->getSize().y)
 		{
-			enemies[i].setPosition(sf::Vector2f(
-				static_cast<float>(rand() % static_cast<int>(window->getSize().x - enemy.getSize().x)),
-				0.f
-			));
+			
+			isPaused = true;
 		}
 	}
 }
@@ -306,24 +310,28 @@ void Game::updateFonts()
 	scorePoints << "Score = " << points;
 	textPoints.setString(scorePoints.str());
 }
-
-
 void Game::update()
 {
-	pollEvents();
-
-//	updateMousePosition();
-
-
-	updateEnemies();
-
-	characterUpdate();
 	
+
+
+		pollEvents();
+			
+		if (isPaused == false)
+		{
+			updateEnemies();
+			//	updateMousePosition();
+			characterUpdate();
+		}
+		
 }
 
 
 // Render функции
-
+void Game::renderBackground()
+{
+	window->draw(background);
+}
 void Game::renderEnemies()
 {
 	// Render вражин
@@ -345,16 +353,16 @@ void Game::renderFonts()
 
 void Game::render()
 {
-	// Render objects here:
 	
-	
-
 	window->clear(sf::Color::White);
 
-	// Draw game here:
+	// Draw game here
+
+	renderBackground();
 	renderFonts();
 	characterRender();
 	renderEnemies();
+	
 	
 	
 	

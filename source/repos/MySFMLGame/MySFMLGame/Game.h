@@ -33,13 +33,14 @@ private:
 	// Window
 
 	sf::RenderWindow* window;
+	sf::RenderWindow* looseWindow;
 	sf::VideoMode videoMode;
 	
 
 
 	// Игровая логика
 
-
+	bool isPaused;
 	int points;
 	float enemySpawnTimer;
 	float enemySpawnTimerMax;
@@ -54,7 +55,7 @@ private:
 	// Игровые объекты
 
 	sf::Texture backgroundTexture;
-	sf::Sprite background;
+	sf::RectangleShape background;
 
 	// Враги
 
@@ -75,6 +76,7 @@ private:
 	int returnError();
 	void initVariables();
 	void initWindow();
+	void initBackground();
 	void initEnemies();
 	void initChar();
 	void initFonts();
@@ -92,13 +94,16 @@ public:
 	virtual ~Game();
 
 	// Функции
+
 	void characterUpdate();
 	void spawnEnemy();
 	void pollEvents();
 	void updateMousePosition();
+	
 	void updateEnemies();
 	void updateFonts();
 	void update();
+	void renderBackground();
 	void characterRender();
 	void renderEnemies();
 	void renderFonts();
