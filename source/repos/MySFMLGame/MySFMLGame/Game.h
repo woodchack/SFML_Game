@@ -40,6 +40,8 @@ private:
 	//loseWindow
 	sf::VideoMode videoLoseMode;
 	sf::RenderWindow* loseWindow;
+	sf::RectangleShape restartButton;
+	sf::RectangleShape quitButton;
 	
 
 
@@ -57,6 +59,8 @@ private:
 	sf::Font font;
 	sf::Text textPoints;
 	sf::Text loseLevelText;
+	sf::Text quitText;
+	sf::Text restartText;
 	// Игровые объекты
 
 	sf::Texture backgroundTexture;
@@ -86,7 +90,12 @@ private:
 	void initChar();
 	void initFonts();
 	void initFontsLoseWindow();
+	void initQuitButtonText();
+	void initRestartButtonText();
 	void initLoseWindow();
+	void initLoseButtons();
+
+
 
 	// Позиция мыши
 
@@ -110,12 +119,14 @@ public:
 	void updateLoseWindow();
 	void updateEnemies();
 	void updateFonts();
+	void updateQuitButton();
+	void updateRestartButton();
 	void update();
 	void renderBackground();
 	void characterRender();
 	void renderEnemies();
 	void renderFonts();
-	void renderLoseWindow();
+	
 	void render();
 	
 

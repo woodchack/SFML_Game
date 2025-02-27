@@ -25,6 +25,7 @@ void Game::initVariables()
 	countEnemies = 0;
 	maxEnemies = 5;
 
+	
 
 	// char directions 
 
@@ -132,25 +133,57 @@ void Game::initFontsLoseWindow()
 	loseLevelText.setFont(font);
 	loseLevelText.setCharacterSize(30);
 	loseLevelText.setFillColor(sf::Color::White);
-	loseLevelText.setPosition(sf::Vector2f(loseWindow->getSize().x, loseWindow->getSize().y));
 }
 
+void Game::initQuitButtonText()
+{
+	quitText.setFont(font);
+	quitText.setCharacterSize(14);
+	quitText.setFillColor(sf::Color::White);
+	quitText.setPosition(sf::Vector2f(quitButton.getSize().x - 5.f, quitButton.getSize().y - 5.f));
+	quitText.setString("Quit");
+}
+
+void Game::initRestartButtonText()
+{
+	restartText.setFont(font);
+	restartText.setCharacterSize(14);
+	restartText.setFillColor(sf::Color::White);
+	restartText.setPosition(sf::Vector2f(restartButton.getSize().x - 5.f, restartButton.getSize().y - 5.f));
+	restartText.setString("Restart");
+}
 void Game::initLoseWindow()
 {
-	sf::VideoMode videoLoseMode({ 350, 250});
+	sf::VideoMode videoLoseMode({ 450, 350});
 
 	loseWindow = new sf::RenderWindow(videoLoseMode, "Game Over", sf::Style::None);
 
 	loseWindow->setFramerateLimit(60);
 
-	
+}
+
+
+void Game::initLoseButtons()
+{
+	quitButton.setSize(sf::Vector2f(130, 60));
+	quitButton.setPosition(sf::Vector2f(70, 260));
+	quitButton.setOutlineThickness(4.f);
+	quitButton.setOutlineColor(sf::Color(250, 150, 100));
+	quitButton.setFillColor(sf::Color::Black);
+
+
+	restartButton.setSize(sf::Vector2f(130, 60));
+	restartButton.setPosition(sf::Vector2f(255, 260));
+	restartButton.setOutlineThickness(4.f);
+	restartButton.setOutlineColor(sf::Color(250, 150, 100));
+	restartButton.setFillColor(sf::Color::Black);
 }
 
 
 // Конструкторы и Деструкторы
 
 
-Game::Game() : character(characterTexture), textPoints(font), loseLevelText(font)
+Game::Game() : character(characterTexture), textPoints(font), loseLevelText(font), restartText(font), quitText(font)
 {
 	initVariables();
 	initWindow();
@@ -158,6 +191,7 @@ Game::Game() : character(characterTexture), textPoints(font), loseLevelText(font
 	initFonts();
 	initEnemies();
 	initChar();
+	initLoseButtons();
 	
 
 }
@@ -363,15 +397,13 @@ void Game::characterUpdate()
 void Game::updateFonts()
 {
 	
-	std::ostringstream scorePoints;
-	scorePoints << "Score:" << points;
-	textPoints.setString(scorePoints.str());
+	
 }
 
 void Game::updateLoseWindow()
 {
 	std::ostringstream scorePointsLW;
-	scorePointsLW << "Your score: " << points;
+	scorePointsLW <<"YOU LOSE!\n\n" << "Your score: " << points << "\nYour record: " << points;
 	loseLevelText.setString(scorePointsLW.str());
 }
 
@@ -419,8 +451,10 @@ void Game::characterRender()
 void Game::renderFonts()
 {
 	window->draw(textPoints);
-	loseLevelText.setPosition(sf::Vector2f(100.f,85.f));
+	loseLevelText.setPosition(sf::Vector2f(130.f,50.f));
 	loseWindow->draw(loseLevelText);
+	loseWindow->draw(quitText);
+	loseWindow->draw(restartText);
 }
 
 
@@ -446,6 +480,8 @@ void Game::render()
 	if (loseWindow && loseWindow->isOpen()) {
 		loseWindow->clear();
 		renderFonts();
+		loseWindow->draw(restartButton);
+		loseWindow->draw(quitButton);
 		loseWindow->display();
 	}
 }
