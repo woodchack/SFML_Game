@@ -33,8 +33,13 @@ private:
 	// Window
 
 	sf::RenderWindow* window;
-	sf::RenderWindow* looseWindow;
+	
 	sf::VideoMode videoMode;
+
+
+	//loseWindow
+	sf::VideoMode videoLoseMode;
+	sf::RenderWindow* loseWindow;
 	
 
 
@@ -51,7 +56,7 @@ private:
 
 	sf::Font font;
 	sf::Text textPoints;
-
+	sf::Text loseLevelText;
 	// Игровые объекты
 
 	sf::Texture backgroundTexture;
@@ -80,6 +85,8 @@ private:
 	void initEnemies();
 	void initChar();
 	void initFonts();
+	void initFontsLoseWindow();
+	void initLoseWindow();
 
 	// Позиция мыши
 
@@ -98,8 +105,9 @@ public:
 	void characterUpdate();
 	void spawnEnemy();
 	void pollEvents();
+	void pollLoseEvent();
 	void updateMousePosition();
-	
+	void updateLoseWindow();
 	void updateEnemies();
 	void updateFonts();
 	void update();
@@ -107,6 +115,7 @@ public:
 	void characterRender();
 	void renderEnemies();
 	void renderFonts();
+	void renderLoseWindow();
 	void render();
 	
 

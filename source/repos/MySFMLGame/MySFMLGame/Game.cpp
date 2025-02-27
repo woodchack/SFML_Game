@@ -127,12 +127,30 @@ void Game::initFonts()
 	
 	
 }
+void Game::initFontsLoseWindow()
+{
+	loseLevelText.setFont(font);
+	loseLevelText.setCharacterSize(30);
+	loseLevelText.setFillColor(sf::Color::White);
+	loseLevelText.setPosition(sf::Vector2f(loseWindow->getSize().x, loseWindow->getSize().y));
+}
+
+void Game::initLoseWindow()
+{
+	sf::VideoMode videoLoseMode({ 350, 250});
+
+	loseWindow = new sf::RenderWindow(videoLoseMode, "Game Over", sf::Style::None);
+
+	loseWindow->setFramerateLimit(60);
+
+	
+}
 
 
 // Конструкторы и Деструкторы
 
 
-Game::Game() : character(characterTexture), textPoints(font)
+Game::Game() : character(characterTexture), textPoints(font), loseLevelText(font)
 {
 	initVariables();
 	initWindow();
@@ -147,6 +165,7 @@ Game::Game() : character(characterTexture), textPoints(font)
 Game::~Game()
 {
 	delete window;
+	delete loseWindow;
 }
 
 	
@@ -172,7 +191,7 @@ void Game::spawnEnemy() {
 
 void Game::pollEvents()
 {
-	
+
 	while (const std::optional event = window->pollEvent())
 	{
 
@@ -180,21 +199,56 @@ void Game::pollEvents()
 		{
 
 			window->close();
+			
 
-		} else
+		}
+		else
 			if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
 			{
 
 				if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
 				{
 					window->close();
+					
 				}
 
 			}
+		
 
-	}	
 	}
 
+	
+}
+void Game::pollLoseEvent()
+{
+	if (loseWindow)
+	{
+		while (const std::optional loseEvent = loseWindow->pollEvent())
+		{
+
+			if (loseEvent->is<sf::Event::Closed>())
+			{
+
+				loseWindow->close();
+
+
+			}
+			else
+				if (const auto* keyPressed = loseEvent->getIf<sf::Event::KeyPressed>())
+				{
+
+					if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
+					{
+						loseWindow->close();
+
+					}
+
+				}
+
+
+		}
+	}
+}
 
 
 void Game::updateMousePosition()
@@ -252,8 +306,11 @@ void Game::updateEnemies()
 
 		if (enemies[i].getPosition().y > window->getSize().y)
 		{
-			
 			isPaused = true;
+
+			initLoseWindow();
+			
+
 		}
 	}
 }
@@ -307,16 +364,30 @@ void Game::updateFonts()
 {
 	
 	std::ostringstream scorePoints;
-	scorePoints << "Score = " << points;
+	scorePoints << "Score:" << points;
 	textPoints.setString(scorePoints.str());
 }
+
+void Game::updateLoseWindow()
+{
+	std::ostringstream scorePointsLW;
+	scorePointsLW << "Your score: " << points;
+	loseLevelText.setString(scorePointsLW.str());
+}
+
 void Game::update()
 {
 	
 
 
 		pollEvents();
-			
+		pollLoseEvent();
+
+
+		if (loseWindow && loseWindow->isOpen()) {
+			updateLoseWindow();
+		}
+		
 		if (isPaused == false)
 		{
 			updateEnemies();
@@ -348,12 +419,15 @@ void Game::characterRender()
 void Game::renderFonts()
 {
 	window->draw(textPoints);
+	loseLevelText.setPosition(sf::Vector2f(100.f,85.f));
+	loseWindow->draw(loseLevelText);
 }
+
 
 
 void Game::render()
 {
-	
+
 	window->clear(sf::Color::White);
 
 	// Draw game here
@@ -362,13 +436,19 @@ void Game::render()
 	renderFonts();
 	characterRender();
 	renderEnemies();
-	
-	
-	
-	
-	window->display();
-}
 
+
+
+
+	window->display();
+
+	// Отрисовка окна поражения (если оно открыто)
+	if (loseWindow && loseWindow->isOpen()) {
+		loseWindow->clear();
+		renderFonts();
+		loseWindow->display();
+	}
+}
 
  // Публичные переменные
 
