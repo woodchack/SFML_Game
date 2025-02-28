@@ -13,7 +13,7 @@ int Game::returnError()
 void Game::initVariables()
 {
 	window = nullptr;
-
+	
 
 	// Игровая логика
 	
@@ -78,10 +78,11 @@ void Game::initEnemies()
 		returnError();
 	}
 
-	enemy.setPosition(sf::Vector2f(width / 2, height / 2));
+	
 	enemy.setSize(sf::Vector2f(100.f, 100.f));
 	enemy.setScale(sf::Vector2f(0.5f, 0.5f));
 	enemy.setTexture(&enemyTexture);
+	enemy.setPosition(sf::Vector2f(width / 2, height / 2));
 }
 
 void Game::initChar()
@@ -138,19 +139,17 @@ void Game::initFontsLoseWindow()
 void Game::initQuitButtonText()
 {
 	quitText.setFont(font);
-	quitText.setCharacterSize(14);
+	quitText.setCharacterSize(25);
 	quitText.setFillColor(sf::Color::White);
-	quitText.setPosition(sf::Vector2f(quitButton.getSize().x - 5.f, quitButton.getSize().y - 5.f));
-	quitText.setString("Quit");
+	
 }
 
 void Game::initRestartButtonText()
 {
 	restartText.setFont(font);
-	restartText.setCharacterSize(14);
+	restartText.setCharacterSize(25);
 	restartText.setFillColor(sf::Color::White);
-	restartText.setPosition(sf::Vector2f(restartButton.getSize().x - 5.f, restartButton.getSize().y - 5.f));
-	restartText.setString("Restart");
+	
 }
 void Game::initLoseWindow()
 {
@@ -180,6 +179,32 @@ void Game::initLoseButtons()
 }
 
 
+void Game::restartGame() 
+{
+	// Сброс игровых параметров
+	points = 0;
+	enemySpawnTimer = enemySpawnTimerMax;
+	countEnemies = 0;
+	isPaused = false;
+	enemies.clear();
+	window->clear();
+	delete window;
+	window = nullptr;
+	delete loseWindow;
+	loseWindow = nullptr;
+	initVariables();
+	initWindow();
+	initBackground();
+	initFonts();
+	initEnemies();
+	initChar();
+	initLoseButtons();
+	initFontsLoseWindow();
+	initRestartButtonText();
+	initQuitButtonText();
+	
+}
+
 // Конструкторы и Деструкторы
 
 
@@ -192,6 +217,9 @@ Game::Game() : character(characterTexture), textPoints(font), loseLevelText(font
 	initEnemies();
 	initChar();
 	initLoseButtons();
+	initFontsLoseWindow();
+	initRestartButtonText();
+	initQuitButtonText();
 	
 
 }
@@ -199,7 +227,9 @@ Game::Game() : character(characterTexture), textPoints(font), loseLevelText(font
 Game::~Game()
 {
 	delete window;
-	delete loseWindow;
+	if (loseWindow) {
+		delete loseWindow;
+	}
 }
 
 	
@@ -291,12 +321,20 @@ void Game::updateMousePosition()
 	// Обновление позиции мыши
 	// Относительно окна
 
-	mousePosWindow = sf::Mouse::getPosition(*window);
+	if (loseWindow && loseWindow->isOpen())
+	{
+		mousePosWindow = sf::Mouse::getPosition(*loseWindow);
 
-	mousePosView = window->mapPixelToCoords(mousePosWindow);
+		mousePosView = loseWindow->mapPixelToCoords(mousePosWindow);
+	}
+	else
+	{
+		mousePosWindow = sf::Mouse::getPosition(*window);
 
+		mousePosView = window->mapPixelToCoords(mousePosWindow);
+	}
 
-	std::cout << "Mouse pos = " << sf::Mouse::getPosition(*window).x << " " << sf::Mouse::getPosition(*window).y << "\n";
+//	std::cout << "Mouse pos = " << sf::Mouse::getPosition(*window).x << " " << sf::Mouse::getPosition(*window).y << "\n";
 }
 
 
@@ -396,15 +434,46 @@ void Game::characterUpdate()
 }
 void Game::updateFonts()
 {
-	
+	std::ostringstream scorePoints;
+	scorePoints << "Score = " << points;
+	textPoints.setString(scorePoints.str());
 	
 }
+
+void Game::buttonPressEvent()
+{
+	if (loseWindow && loseWindow->isOpen())
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		{
+			if (quitButton.getGlobalBounds().contains(mousePosView))
+			{
+				window->close(); // Корректное закрытие основного окна
+				if (loseWindow) {
+					loseWindow->close(); // Корректное закрытие окна поражения
+				}
+			}
+
+
+			if (restartButton.getGlobalBounds().contains(mousePosView))
+			{
+			restartGame();
+			}
+		}
+	}
+}
+
 
 void Game::updateLoseWindow()
 {
 	std::ostringstream scorePointsLW;
-	scorePointsLW <<"YOU LOSE!\n\n" << "Your score: " << points << "\nYour record: " << points;
+	scorePointsLW << "YOU LOSE!\n\n" << "Your score: " << points;
+
 	loseLevelText.setString(scorePointsLW.str());
+
+	restartText.setString("Restart");
+
+	quitText.setString("Quit");
 }
 
 void Game::update()
@@ -414,16 +483,18 @@ void Game::update()
 
 		pollEvents();
 		pollLoseEvent();
+		updateMousePosition();
 
 
 		if (loseWindow && loseWindow->isOpen()) {
 			updateLoseWindow();
+			buttonPressEvent();
 		}
 		
 		if (isPaused == false)
 		{
+
 			updateEnemies();
-			//	updateMousePosition();
 			characterUpdate();
 		}
 		
@@ -451,10 +522,17 @@ void Game::characterRender()
 void Game::renderFonts()
 {
 	window->draw(textPoints);
-	loseLevelText.setPosition(sf::Vector2f(130.f,50.f));
-	loseWindow->draw(loseLevelText);
-	loseWindow->draw(quitText);
-	loseWindow->draw(restartText);
+
+	if (loseWindow && loseWindow->isOpen()) {
+		loseLevelText.setPosition(sf::Vector2f(140.f, 50.f));
+		loseWindow->draw(loseLevelText);
+
+		quitText.setPosition(sf::Vector2f(115.f, 275.f));
+		loseWindow->draw(quitText);
+
+		restartText.setPosition(sf::Vector2f(280.f, 275.f));
+		loseWindow->draw(restartText);
+	}
 }
 
 
@@ -463,25 +541,17 @@ void Game::render()
 {
 
 	window->clear(sf::Color::White);
-
-	// Draw game here
-
 	renderBackground();
-	renderFonts();
 	characterRender();
 	renderEnemies();
-
-
-
-
+	renderFonts(); // Переместить сюда, чтобы основной интерфейс рисовался поверх
 	window->display();
 
-	// Отрисовка окна поражения (если оно открыто)
 	if (loseWindow && loseWindow->isOpen()) {
 		loseWindow->clear();
-		renderFonts();
 		loseWindow->draw(restartButton);
 		loseWindow->draw(quitButton);
+		renderFonts(); // Уже защищено проверкой внутри
 		loseWindow->display();
 	}
 }

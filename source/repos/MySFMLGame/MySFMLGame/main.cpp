@@ -13,6 +13,7 @@ int main()
 
 	while (game.windowIsRunning()) // Game loop
 	{
+		
 		// Update
 		game.update();
 		//Render

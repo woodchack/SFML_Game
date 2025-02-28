@@ -53,6 +53,7 @@ private:
 	float enemySpawnTimerMax;
 	unsigned int maxEnemies;
 	unsigned int countEnemies;
+	
 
 
 
@@ -61,6 +62,8 @@ private:
 	sf::Text loseLevelText;
 	sf::Text quitText;
 	sf::Text restartText;
+
+	
 	// Игровые объекты
 
 	sf::Texture backgroundTexture;
@@ -95,6 +98,7 @@ private:
 	void initLoseWindow();
 	void initLoseButtons();
 
+	void restartGame();
 
 
 	// Позиция мыши
@@ -119,14 +123,12 @@ public:
 	void updateLoseWindow();
 	void updateEnemies();
 	void updateFonts();
-	void updateQuitButton();
-	void updateRestartButton();
 	void update();
 	void renderBackground();
 	void characterRender();
 	void renderEnemies();
 	void renderFonts();
-	
+	void buttonPressEvent();
 	void render();
 	
 
