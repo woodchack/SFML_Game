@@ -6,6 +6,8 @@
 #include <random>
 #include <cmath>
 #include <sstream>
+#include <chrono>
+#include <thread>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
@@ -53,6 +55,7 @@ private:
 	float enemySpawnTimerMax;
 	unsigned int maxEnemies;
 	unsigned int countEnemies;
+	float enemySpeed;
 	
 
 
@@ -123,6 +126,7 @@ public:
 	void updateLoseWindow();
 	void updateEnemies();
 	void updateFonts();
+	void timer();
 	void update();
 	void renderBackground();
 	void characterRender();

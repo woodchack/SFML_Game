@@ -21,6 +21,7 @@ void Game::initVariables()
 
 	enemySpawnTimerMax = 10.f;
 	enemySpawnTimer = enemySpawnTimerMax;
+	enemySpeed = 2.f;
 	
 	countEnemies = 0;
 	maxEnemies = 5;
@@ -192,6 +193,8 @@ void Game::restartGame()
 	window = nullptr;
 	delete loseWindow;
 	loseWindow = nullptr;
+	enemySpeed = 0;
+	maxEnemies = 5;
 	initVariables();
 	initWindow();
 	initBackground();
@@ -337,7 +340,16 @@ void Game::updateMousePosition()
 //	std::cout << "Mouse pos = " << sf::Mouse::getPosition(*window).x << " " << sf::Mouse::getPosition(*window).y << "\n";
 }
 
-
+void Game::timer()
+{
+	static sf::Clock clock; 
+	if (clock.getElapsedTime().asSeconds() >= 10.f)
+	{
+		maxEnemies++;
+		enemySpeed += 0.1f;
+		clock.restart(); 
+	}
+}
 
 
 void Game::updateEnemies()
@@ -358,7 +370,7 @@ void Game::updateEnemies()
 	// Перемещение вражин
 	for (int i = 0; i < enemies.size(); ++i)
 	{
-		enemies[i].move(sf::Vector2f(0.f, 2.f));
+		enemies[i].move(sf::Vector2f(0.f, enemySpeed));
 
 
 		// Проверка пересечение
@@ -430,7 +442,6 @@ void Game::characterUpdate()
 		character.setTextureRect(dir[LEFT]);
 	}
 
-	
 }
 void Game::updateFonts()
 {
@@ -484,6 +495,7 @@ void Game::update()
 		pollEvents();
 		pollLoseEvent();
 		updateMousePosition();
+		timer();
 
 
 		if (loseWindow && loseWindow->isOpen()) {
